@@ -88,7 +88,11 @@
     <Compile Include="Concrete\Context.cs" />
     <Compile Include="Concrete\Repositories\AboutDal.cs" />
     <Compile Include="Concrete\Repositories\CategoryDal.cs" />
+    <Compile Include="Concrete\Repositories\ContactDal.cs" />
+    <Compile Include="Concrete\Repositories\ContentDal.cs" />
     <Compile Include="Concrete\Repositories\GenericRepository.cs" />
+    <Compile Include="Concrete\Repositories\HeadingDal.cs" />
+    <Compile Include="Concrete\Repositories\WriterDal.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

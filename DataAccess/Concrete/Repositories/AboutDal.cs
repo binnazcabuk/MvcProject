@@ -10,35 +10,9 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.Repositories
 {
-    public class AboutDal : IAboutDal
+    public class AboutDal : GenericRepository<About>, IAboutDal
     {
 
-        Context context = new Context();
-        DbSet<About> _object;
-
-        public void Delete(About entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Insert(About entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<About> List()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<About> List(Expression<Func<About, bool>> filter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(About entity)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
