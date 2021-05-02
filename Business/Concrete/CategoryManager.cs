@@ -10,33 +10,47 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-  public  class CategoryManager
+    public class CategoryManager : ICategoryService
     {
-    
+        ICategoryDal _categoryDal;
 
-        GenericRepository<Category> categoryDal = new GenericRepository<Category>();
-  
-      
+        public CategoryManager(ICategoryDal categoryDal)
+        {
+            _categoryDal = categoryDal;
+        }
+
+
+
+        //GenericRepository<Category> categoryDal = new GenericRepository<Category>();
+
+
+
+        //public List<Category> GetAll()
+        //{
+        //    return categoryDal.List();
+        //}
+
+        //public void Add(Category category)
+        //{
+        //    if(category.CategoryName==""|| category.CategoryName.Length<=3||category.CategoryDescription==""
+        //        || category.CategoryName.Length>=50)
+        //    {
+        //        //hata msj
+        //    }
+        //    else
+        //    {
+        //        categoryDal.Insert(category);
+        //    }
+
+        //}
+        public void Add(Category category)
+        {
+            throw new NotImplementedException();
+        }
 
         public List<Category> GetAll()
         {
-            return categoryDal.List();
+            return _categoryDal.List();
         }
-
-        public void Add(Category category)
-        {
-            if(category.CategoryName==""|| category.CategoryName.Length<=3||category.CategoryDescription==""
-                || category.CategoryName.Length>=50)
-            {
-                //hata msj
-            }
-            else
-            {
-                categoryDal.Insert(category);
-            }
-           
-        }
-
-      
     }
 }
