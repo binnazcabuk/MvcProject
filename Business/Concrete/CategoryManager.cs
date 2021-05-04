@@ -19,33 +19,10 @@ namespace Business.Concrete
             _categoryDal = categoryDal;
         }
 
-
-
-        //GenericRepository<Category> categoryDal = new GenericRepository<Category>();
-
-
-
-        //public List<Category> GetAll()
-        //{
-        //    return categoryDal.List();
-        //}
-
-        //public void Add(Category category)
-        //{
-        //    if(category.CategoryName==""|| category.CategoryName.Length<=3||category.CategoryDescription==""
-        //        || category.CategoryName.Length>=50)
-        //    {
-        //        //hata msj
-        //    }
-        //    else
-        //    {
-        //        categoryDal.Insert(category);
-        //    }
-
-        //}
+     
         public void Add(Category category)
         {
-            throw new NotImplementedException();
+            _categoryDal.Insert(category);
         }
 
         public List<Category> GetAll()
