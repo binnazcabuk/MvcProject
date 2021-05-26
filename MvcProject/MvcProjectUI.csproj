@@ -2272,6 +2272,7 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\AdminCategory\Index.cshtml" />
     <Content Include="Views\AdminCategory\AddCategory.cshtml" />
+    <Content Include="Views\AdminCategory\UpdateCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2305,14 +2306,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
     <TypeScriptCompile Include="AdminLTE-3.0.4\plugins\fullcalendar-bootstrap\main.d.ts" />
     <TypeScriptCompile Include="AdminLTE-3.0.4\plugins\fullcalendar-daygrid\main.d.ts" />
     <TypeScriptCompile Include="AdminLTE-3.0.4\plugins\fullcalendar-interaction\main.d.ts" />
     <TypeScriptCompile Include="AdminLTE-3.0.4\plugins\fullcalendar-timegrid\main.d.ts" />
     <TypeScriptCompile Include="AdminLTE-3.0.4\plugins\fullcalendar\main.d.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
