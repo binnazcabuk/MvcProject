@@ -61,5 +61,13 @@ namespace MvcProject.Controllers
             
             return View(categoryvalue);
         }
+
+
+        [HttpPost]
+        public ActionResult UpdateCategory(Category category)
+        {
+            categoryManager.Update(category);
+            return RedirectToAction("Index");
+        }
     }
 }
