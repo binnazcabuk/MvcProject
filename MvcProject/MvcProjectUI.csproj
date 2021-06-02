@@ -134,8 +134,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminCategoryController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\HeadingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
+    <Compile Include="Controllers\WriterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -181,6 +183,10 @@
     <Content Include="AdminLTE-3.0.4\dist\img\avatar2.png" />
     <Content Include="AdminLTE-3.0.4\dist\img\avatar3.png" />
     <Content Include="AdminLTE-3.0.4\dist\img\avatar5.png" />
+    <Content Include="AdminLTE-3.0.4\dist\img\man.png" />
+    <Content Include="AdminLTE-3.0.4\dist\img\man2.png" />
+    <Content Include="AdminLTE-3.0.4\dist\img\man3.png" />
+    <Content Include="AdminLTE-3.0.4\dist\img\woman.png" />
     <Content Include="AdminLTE-3.0.4\dist\img\boxed-bg.jpg" />
     <Content Include="AdminLTE-3.0.4\dist\img\boxed-bg.png" />
     <Content Include="AdminLTE-3.0.4\dist\img\credit\american-express.png" />
@@ -193,7 +199,6 @@
     <Content Include="AdminLTE-3.0.4\dist\img\default-150x150.png" />
     <Content Include="AdminLTE-3.0.4\dist\img\girl.png" />
     <Content Include="AdminLTE-3.0.4\dist\img\icons.png" />
-    <Content Include="AdminLTE-3.0.4\dist\img\Luigi.png" />
     <Content Include="AdminLTE-3.0.4\dist\img\photo1.png" />
     <Content Include="AdminLTE-3.0.4\dist\img\photo2.png" />
     <Content Include="AdminLTE-3.0.4\dist\img\photo3.jpg" />
@@ -211,6 +216,11 @@
     <Content Include="AdminLTE-3.0.4\dist\img\user6-128x128.jpg" />
     <Content Include="AdminLTE-3.0.4\dist\img\user7-128x128.jpg" />
     <Content Include="AdminLTE-3.0.4\dist\img\user8-128x128.jpg" />
+    <Content Include="AdminLTE-3.0.4\dist\img\woman2.png" />
+    <Content Include="AdminLTE-3.0.4\dist\img\woman3.png" />
+    <Content Include="AdminLTE-3.0.4\dist\img\woman4.png" />
+    <Content Include="AdminLTE-3.0.4\dist\img\woman5.png" />
+    <Content Include="AdminLTE-3.0.4\dist\img\woman6.png" />
     <Content Include="AdminLTE-3.0.4\dist\js\adminlte.js" />
     <Content Include="AdminLTE-3.0.4\dist\js\adminlte.min.js" />
     <Content Include="AdminLTE-3.0.4\dist\js\demo.js" />
@@ -2278,6 +2288,11 @@
     <Content Include="Views\AdminCategory\AddCategory.cshtml" />
     <Content Include="Views\AdminCategory\UpdateCategory.cshtml" />
     <Content Include="Views\Statistics\Index.cshtml" />
+    <Content Include="Views\Writer\Index.cshtml" />
+    <Content Include="Views\Writer\AddWriter.cshtml" />
+    <Content Include="Views\Writer\EditWriter.cshtml" />
+    <Content Include="Views\Heading\Index.cshtml" />
+    <Content Include="Views\Heading\AddHeading.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -18,7 +18,9 @@ namespace Business.ValidationRules
             RuleFor(x => x.WriterName).MinimumLength(2).WithMessage("Yazar adı en az 3 karakter olmalıdır!");
             RuleFor(x => x.WriterSurName).NotEmpty().WithMessage("Yazar soyadı boş olamaz!");
             RuleFor(x => x.WriterSurName).MinimumLength(3).WithMessage("Yazar soyadı en az 3 karakter olmalıdır!");
-
+            RuleFor(x => x.WriterAbout).NotEmpty().WithMessage("Yazar hakkında boş olamaz!");
+            RuleFor(x => x.WriterTitle).NotEmpty().WithMessage("Yazar Ünvanı boş olamaz!");
+            RuleFor(x => x.WriterAbout).MinimumLength(2).WithMessage("Yazar hakkında en az 2 karakter olmalıdır!");
             RuleFor(x => x.WriterMail).NotEmpty().WithMessage("Yazar mail boş olamaz!");
             RuleFor(x => x.WriterMail).EmailAddress().WithMessage("Yazar maili mail adresi türünde olmalıdır!");
             RuleFor(x => x.WriterPassword).NotEmpty().WithMessage("Yazar şifre boş olamaz!");
