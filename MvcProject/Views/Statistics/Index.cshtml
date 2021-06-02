@@ -1,67 +1,88 @@
 ﻿
+
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <style>
-    .counter{
-    font-family: 'Open Sans', sans-serif;
-    color: #fff;
-    background: #fff;
-    text-align: center;
-    width: 190px;
-    padding: 25px 30px 10px;
-    margin: 0 auto;
-    border-radius: 30px 0 ;
-    box-shadow: 10px 10px 0 rgba(0,0,0,0.05);
-    position: relative;
-    z-index: 1;
-}
-.counter:before{
-    content: "";
-    background: #51d658;
-    border-radius: 15px 0 30px 0;
-    box-shadow: inset 0 4px 8px rgba(0,0,0,0.15);
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    right: 12px;
-    bottom: 27px;
-    z-index: -1;
-}
-.counter .counter-icon{
-    font-size: 35px;
-    margin: 0 0 10px;
-    transform: rotateX(0deg);
-    transition: all 0.3s ease 0s;
-}
-.counter:hover .counter-icon{
-    transform: rotateX(360deg);
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-}
-.counter h3{
-    font-size: 17px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin: 0 0 20px;
-}
-.counter .counter-value{
-    color: #666;
-    background: #fff;
-    font-size: 33px;
-    font-weight: 600;
-    text-align: right;
-    line-height: 60px;
-    width: 90%;
-    height: 50px;
-    padding: 0 15px;
-    margin: 0 0 0 -20px;
-    display: block;
-}
-.counter.pink:before{ background-color: #FF5D94; }
+    .counter {
+        font-family: 'Open Sans', sans-serif;
+        color: #fff;
+        background: #fff;
+        text-align: center;
+        width: 190px;
+        padding: 25px 30px 10px;
+        margin: 0 auto;
+        border-radius: 30px 0;
+        box-shadow: 10px 10px 0 rgba(0,0,0,0.05);
+        position: relative;
+        z-index: 1;
+    }
 
+        .counter:before {
+            content: "";
+            background: #51d658;
+            border-radius: 15px 0 30px 0;
+            box-shadow: inset 0 4px 8px rgba(0,0,0,0.15);
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            bottom: 27px;
+            z-index: -1;
+        }
+
+        .counter .counter-icon {
+            font-size: 35px;
+            margin: 0 0 10px;
+            transform: rotateX(0deg);
+            transition: all 0.3s ease 0s;
+        }
+
+        .counter:hover .counter-icon {
+            transform: rotateX(360deg);
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .counter h3 {
+            font-size: 17px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 20px;
+        }
+
+        .counter .counter-value {
+            color: #666;
+            background: #fff;
+            font-size: 33px;
+            font-weight: 600;
+            text-align: right;
+            line-height: 60px;
+            width: 90%;
+            height: 50px;
+            padding: 0 15px;
+            margin: 0 0 0 -20px;
+            display: block;
+        }
+
+        .counter.pink:before {
+            background-color: #FF5D94;
+        }
+
+        .counter.blue:before {
+            background-color:cornflowerblue;
+        }
+
+        .counter.yellow:before {
+            background-color:goldenrod;
+        }
+
+        .counter.red:before {
+            background-color:crimson;
+        }
 </style>
 
 <div class="container">
@@ -69,19 +90,50 @@
         <div class="col-md-3 col-sm-6">
             <div class="counter">
                 <div class="counter-icon">
-                    <i class="fa fa-globe"></i>
+                    <i class="fa fa-pager"></i>
                 </div>
-                <h3>Web Designing</h3>
-                <span class="counter-value">1</span>
+                <h5 style="height:90px">Toplam Kategori Sayısı</h5>
+                <span class="counter-value">@ViewBag.categorycount</span>
             </div>
         </div>
         <div class="col-md-3 col-sm-6">
+            <div class="counter blue ">
+                <div class="counter-icon">
+                    <i class="fa fa-pager"></i>
+                </div>
+                <h5 style="height:90px">"Yazılım" Kategorisine Ait Başlık Sayısı</h5>
+                <span class="counter-value">@ViewBag.softwarecategorycount</span>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
             <div class="counter pink">
                 <div class="counter-icon">
-                    <i class="fa fa-rocket"></i>
+                    <i class="fa fa-pen-fancy"></i>
                 </div>
-                <h3>Web Development</h3>
-                <span class="counter-value">1</span>
+                <h5 style="height:90px">Yazar Adında 'a' Harfi Geçen Yazar Sayısı</h5>
+                <span class="counter-value">@ViewBag.writername</span>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="counter yellow">
+                <div class="counter-icon">
+                    <i class="fa fa-pager"></i>
+                </div>
+                <h5 style="height:90px">En Fazla Başlığa Sahip Kategori Adı</h5>
+                <span style="font-size:25px" class="counter-value">@ViewBag.categoryHeader</span>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6" style="margin-top:20px">
+            <div class="counter red">
+                <div class="counter-icon">
+                    <i class="fa fa-pager"></i>
+                </div>
+                <h5 style="height:90px">Kategori Durumu  Sayısal Fark</h5>
+                
+                <span class="counter-value">@ViewBag.result</span>
             </div>
         </div>
     </div>

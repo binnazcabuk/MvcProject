@@ -13,13 +13,33 @@ namespace MvcProject.Controllers
     {
         // GET: Statistics
 
-        Context context = new Context();
+        Context _context = new Context();
         public ActionResult Index()
         {
-            var categorycount = context.Categories.Count().ToString();
-            ViewBag.categorycount = categorycount;
+            //Toplam Kategori Sayisi
+            var categoryCount = _context.Categories.Count().ToString();
+            ViewBag.categorycount = categoryCount;
 
-            var softwarecategorycount = context.Headings.Count(h => h.CategoryID == 2).ToString();
+            // Yazilim Kategorisi (11) baslik sayisi
+            var softwareCategoryCount = _context.Headings.Count(h => h.CategoryID == 11).ToString();
+            ViewBag.softwareCategoryCount = softwareCategoryCount;
+
+            // Yazar adinda "a" harfi gecen yazar sayisi
+            var writerName = _context.Writers.Where(w => w.WriterName.Contains("a") || w.WriterName.Contains("A")).Count();
+            ViewBag.writerName = writerName;
+
+
+            // En fazla basliga sahip kategori adi
+            var categoryHeader = _context.Categories.Where(u => u.CategoryID == _context.Headings.GroupBy(x => x.CategoryID).OrderByDescending(x => x.Count())
+                .Select(x => x.Key).FirstOrDefault()).Select(x => x.CategoryName).FirstOrDefault();
+            ViewBag.categoryHeader = categoryHeader;
+
+            // Kategori tablosunda durumu true olan kategoriler ile false olan kategoriler arasındaki sayısal fark
+            var categoryStatusTrue = _context.Categories.Count(x => x.CategoryStatus == true);
+            var categoryStatusFalse = _context.Categories.Count(x => x.CategoryStatus == false);
+
+            var result = categoryStatusTrue - categoryStatusFalse;
+            ViewBag.result = result;
 
             return View();
         }
