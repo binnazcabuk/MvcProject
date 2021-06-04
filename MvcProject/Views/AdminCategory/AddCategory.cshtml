@@ -5,25 +5,55 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Yeni Kategori Ekle</h1>
-<br />
 
-@using (Html.BeginForm("AddCategory", "AdminCategory", FormMethod.Post))
-{
-    <div class="form-group">
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini">
+    <!-- /.navbar -->
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-">
+                <div class="col-sm-6">
+                    <h1>Yeni Kategori Ekleme</h1>
 
-        @Html.Label("Kategori Adı:")
-        @Html.TextBoxFor(x => x.CategoryName, new { @class="form-control"})
-        @Html.ValidationMessageFor(x => x.CategoryName)
-        <br />
-        <br />
-        @Html.Label("Açıklamayı Yazınız:")
-        @Html.TextAreaFor(x => x.CategoryDescription, new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.CategoryDescription)
-        <br />
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
 
-       
 
-        <button class="btn btn-primary">Kaydet</button>
-    </div>
-}
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="card card-solid">
+            <div class="card-body pb-0">
+                <div class="row-cols-1">
+
+                    @using (Html.BeginForm("AddCategory", "AdminCategory", FormMethod.Post))
+                    {
+                        <div class="form-group">
+
+                            @Html.Label("Kategori Adı:")
+                            @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.CategoryName)
+                            <br />
+                            <br />
+                            @Html.Label("Açıklama:")
+                            @Html.TextAreaFor(x => x.CategoryDescription, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.CategoryDescription)
+                            <br />
+
+
+
+                            <button class="btn btn-outline-success">Ekle</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <!-- /.card -->
+    </section>
+    <!-- /.content -->
+</body>
+</html>

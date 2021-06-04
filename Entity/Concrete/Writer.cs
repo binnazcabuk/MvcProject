@@ -25,6 +25,9 @@ namespace Entity.Concrete
         public string WriterTitle { get; set; }
         [StringLength(200)]
         public string WriterMail{ get; set; }
+
+        public bool WriterStatus { get; set; }
+
         [StringLength(200)]
         public string WriterPassword { get; set; }
 

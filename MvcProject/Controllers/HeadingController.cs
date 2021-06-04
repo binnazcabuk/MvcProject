@@ -49,5 +49,37 @@ namespace MvcProject.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public ActionResult UpdateHeading(int id)
+        {
+          
+            List<SelectListItem> valueCategory = (from category in _categoryManager.GetAll()
+                                                  select new SelectListItem
+                                                  {
+                                                      Text = category.CategoryName,
+                                                      Value = category.CategoryID.ToString()
+                                                  }).ToList();
+
+            ViewBag.category = valueCategory;
+            var headingValue = _headingManager.GetById(id);
+            return View(headingValue);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateHeading(Heading heading)
+        {
+            _headingManager.Update(heading);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult DeleteHeading(int id)
+        {
+            var headingValue = _headingManager.GetById(id);
+
+            headingValue.HeadingStatus = false;
+            _headingManager.Delete(headingValue);
+            return RedirectToAction("Index");
+        }
+
     }
 }
