@@ -25,7 +25,7 @@ namespace Business.Concrete
 
         public void Delete(Heading heading)
         {
-            
+         
             _headingDal.Update(heading);
         }
 

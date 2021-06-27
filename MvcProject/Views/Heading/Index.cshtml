@@ -108,8 +108,36 @@
                             {
                                 color = "badge badge-danger";
                             }
+                            if (item.HeadingStatus == true)
+                            {
+                                status = "badge badge-success";
+                            }
 
-                           
+                            if (item.HeadingStatus == false)
+                            {
+                                status = "badge badge-danger";
+                            }
+
+                            if (item.HeadingStatus == true)
+                            {
+                                statusName = "Aktif";
+                            }
+
+                            if (item.HeadingStatus == false)
+                            {
+                                statusName = "Pasif";
+                            }
+
+                            if (item.HeadingStatus == true)
+                            {
+                                deleteName = "Pasif  Yap";
+                            }
+
+                            if (item.HeadingStatus == false)
+                            {
+                                deleteName = "Aktif  Yap";
+                            }
+
 
                             <tr>
                                 <td>
@@ -137,7 +165,7 @@
                                 </td>
 
                                 <td class="project-state">
-                                    <h5> <span class="@status"> @item.HeadingStatus</span></h5>
+                                    <h5> <span class="@status"> @statusName </span></h5>
                                 </td>
                                 <td class="project-state">
                                     <h5> <span class=" @color">@item.Category.CategoryName</span></h5>
@@ -153,10 +181,10 @@
                                         </i>
                                         Düzenle
                                     </a>
-                                    <a class="btn btn-danger btn-sm" href="/Heading/DeleteHeading/@item.HeadingID">
-                                        <i class="fas fa-trash">
+                                    <a class="btn btn-warning btn-sm" href="/Heading/DeleteHeading/@item.HeadingID">
+                                        <i class="fas fa-exchange-alt">
                                         </i>
-                                        Sil
+                                       @deleteName
                                     </a>
                                 </td>
                             </tr>

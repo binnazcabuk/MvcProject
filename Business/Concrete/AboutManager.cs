@@ -28,6 +28,16 @@ namespace Business.Concrete
             _aboutDal.Delete(about);
         }
 
+        public List<About> GetAll()
+        {
+            return _aboutDal.List();
+        }
+
+        public About GetById(int id)
+        {
+            return _aboutDal.Get(x=>x.AboutID==id);
+        }
+
         public void Update(About about)
         {
             _aboutDal.Update(about);
