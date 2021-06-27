@@ -20,8 +20,7 @@ namespace Entity.Concrete
       //  [AllowHtml]
         public string MessageContent { get; set; }
         public DateTime MessageDate { get; set; }
-        public bool IsDraft { get; set; }
-        public bool IsRead { get; set; }
+      
 
     }
 }
