@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class mig_writer_edit : DbMigration
+    public partial class mig_writer_update : DbMigration
     {
         public override void Up()
         {
@@ -37,6 +37,7 @@
                         HeadingID = c.Int(nullable: false, identity: true),
                         HeadingName = c.String(maxLength: 50),
                         HeadingDate = c.DateTime(nullable: false),
+                        HeadingStatus = c.Boolean(nullable: false),
                         CategoryID = c.Int(nullable: false),
                         WriterID = c.Int(nullable: false),
                     })
@@ -53,6 +54,7 @@
                         ContentID = c.Int(nullable: false, identity: true),
                         ContentValue = c.String(maxLength: 1000),
                         ContentDate = c.DateTime(nullable: false),
+                        ContentStatus = c.Boolean(nullable: false),
                         HeadingID = c.Int(nullable: false),
                         WriterID = c.Int(),
                     })
@@ -69,9 +71,11 @@
                         WriterID = c.Int(nullable: false, identity: true),
                         WriterName = c.String(maxLength: 50),
                         WriterSurName = c.String(maxLength: 50),
-                        WriterImage = c.String(maxLength: 100),
+                        WriterImage = c.String(maxLength: 250),
                         WriterAbout = c.String(maxLength: 100),
+                        WriterTitle = c.String(maxLength: 50),
                         WriterMail = c.String(maxLength: 200),
+                        WriterStatus = c.Boolean(nullable: false),
                         WriterPassword = c.String(maxLength: 200),
                     })
                 .PrimaryKey(t => t.WriterID);
@@ -88,6 +92,19 @@
                     })
                 .PrimaryKey(t => t.ContactID);
             
+            CreateTable(
+                "dbo.Messages",
+                c => new
+                    {
+                        MessageId = c.Int(nullable: false, identity: true),
+                        SenderMail = c.String(maxLength: 50),
+                        ReceiverMail = c.String(maxLength: 50),
+                        Subject = c.String(maxLength: 100),
+                        MessageContent = c.String(),
+                        MessageDate = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.MessageId);
+            
         }
         
         public override void Down()
@@ -100,6 +117,7 @@
             DropIndex("dbo.Contents", new[] { "HeadingID" });
             DropIndex("dbo.Headings", new[] { "WriterID" });
             DropIndex("dbo.Headings", new[] { "CategoryID" });
+            DropTable("dbo.Messages");
             DropTable("dbo.Contacts");
             DropTable("dbo.Writers");
             DropTable("dbo.Contents");

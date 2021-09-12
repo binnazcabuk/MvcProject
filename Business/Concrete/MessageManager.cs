@@ -19,28 +19,12 @@ namespace Business.Concrete
         }
 
        // [CacheAspect(typeof(MemoryCacheManager))]
-        public List<Message> GetAll()
+        public List<Message> GetAllInbox()
         {
-            return _messageDal.List();
+            return _messageDal.List(x => x.ReceiverMail == "binnaz@gmail.com");
         }
 
-        //[CacheAspect(typeof(MemoryCacheManager))]
-        public List<Message> GetAllInbox(string parameter)
-        {
-            return _messageDal.List(x => x.ReceiverMail == parameter);
-        }
-
-        //[CacheAspect(typeof(MemoryCacheManager))]
-        public List<Message> GetAllSendbox(string parameter)
-        {
-            return _messageDal.List(x => x.SenderMail == parameter).Where(x => x.IsDraft == false).ToList();
-        }
-
-       // [CacheAspect(typeof(MemoryCacheManager))]
-        public List<Message> GetAllUnRead()
-        {
-            return _messageDal.List(x => x.ReceiverMail == "binnaz@gmail.com").Where(x => x.IsRead == false).ToList();
-        }
+        
 
         public Message GetById(int id)
         {
@@ -65,14 +49,9 @@ namespace Business.Concrete
             _messageDal.Delete(message);
         }
 
-        public List<Message> IsDraft()
+        public List<Message> GetAllSendbox()
         {
-            return _messageDal.List(x => x.IsDraft == true);
-        }
-
-        public void SaveDraftAdd(Message message)
-        {
-            _messageDal.Insert(message);
+            return _messageDal.List(x => x.SenderMail == "binnaz@gmail.com");
         }
     }
 }

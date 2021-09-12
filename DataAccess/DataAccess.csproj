@@ -95,9 +95,9 @@
     <Compile Include="Concrete\EntityFramework\EfHeadingDal.cs" />
     <Compile Include="Concrete\EntityFramework\EfWriterDal.cs" />
     <Compile Include="Concrete\Repositories\GenericRepository.cs" />
-    <Compile Include="Migrations\202106021511125_mig_writer_edit.cs" />
-    <Compile Include="Migrations\202106021511125_mig_writer_edit.designer.cs">
-      <DependentUpon>202106021511125_mig_writer_edit.cs</DependentUpon>
+    <Compile Include="Migrations\202109121645026_mig_writer_update.cs" />
+    <Compile Include="Migrations\202109121645026_mig_writer_update.designer.cs">
+      <DependentUpon>202109121645026_mig_writer_update.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,8 +113,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202106021511125_mig_writer_edit.resx">
-      <DependentUpon>202106021511125_mig_writer_edit.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202109121645026_mig_writer_update.resx">
+      <DependentUpon>202109121645026_mig_writer_update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
