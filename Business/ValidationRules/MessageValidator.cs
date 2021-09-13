@@ -14,7 +14,7 @@ namespace Business.ValidationRules
         {
             RuleFor(x => x.ReceiverMail).NotEmpty().WithMessage("Alıcı adresi boş olamaz!");
             RuleFor(x => x.ReceiverMail).MinimumLength(3).WithMessage("Alıcı Adı en az 3 karakter olmalıdır!");
-            RuleFor(x => x.SenderMail).NotEmpty().WithMessage("Gönderen adresi boş olamaz!");
+            
             RuleFor(x => x.ReceiverMail).EmailAddress();
             RuleFor(x => x.SenderMail).EmailAddress();
             RuleFor(x => x.Subject).NotEmpty().WithMessage("Konu Adı boş olamaz!");

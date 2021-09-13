@@ -1,7 +1,9 @@
 ﻿using Business.Concrete;
+using Business.ValidationRules;
 using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entity.Concrete;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,7 @@ namespace MvcProject.Controllers
     public class MessageController : Controller
     {
         MessageManager _messageManager = new MessageManager(new EfMessageDal());
-
+        MessageValidator _validations = new MessageValidator();
        
         public ActionResult Inbox()
         {
@@ -35,8 +37,23 @@ namespace MvcProject.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult NewMessage(Message mesaj)
+        public ActionResult NewMessage(Message message)
         {
+            
+            ValidationResult result = _validations.Validate(message);
+            if (result.IsValid)
+            {
+                message.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+                _messageManager.Add(message);
+                return RedirectToAction("Sendbox");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
             return View();
         }
 
