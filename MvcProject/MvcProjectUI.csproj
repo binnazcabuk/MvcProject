@@ -137,6 +137,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
+    <Compile Include="Controllers\ErrorPageController.cs" />
     <Compile Include="Controllers\HeadingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
@@ -167,6 +168,11 @@
     <Content Include="AdminLTE-3.0.4\build\npm\DocsPublish.js" />
     <Content Include="AdminLTE-3.0.4\build\npm\Plugins.js" />
     <Content Include="AdminLTE-3.0.4\build\npm\Publish.js" />
+    <Content Include="AdminLTE-3.0.4\colorlib-error\css\font-awesome.min.css" />
+    <Content Include="AdminLTE-3.0.4\colorlib-error\css\style.css" />
+    <Content Include="AdminLTE-3.0.4\colorlib-error\fonts\fontawesome-webfont.svg" />
+    <Content Include="AdminLTE-3.0.4\colorlib-error\index.html" />
+    <Content Include="AdminLTE-3.0.4\colorlib-error\readme.txt" />
     <Content Include="AdminLTE-3.0.4\dist\css\adminlte.css" />
     <Content Include="AdminLTE-3.0.4\dist\css\adminlte.min.css" />
     <Content Include="AdminLTE-3.0.4\dist\css\alt\adminlte.components.css" />
@@ -2257,6 +2263,11 @@
     <Content Include="AdminLTE-3.0.4\plugins\sweetalert2-theme-bootstrap-4\bootstrap-4.scss" />
     <Content Include="AdminLTE-3.0.4\plugins\toastr\toastr.js.map" />
     <Content Include="AdminLTE-3.0.4\README.md" />
+    <Content Include="AdminLTE-3.0.4\colorlib-error\fonts\fontawesome-webfont.eot" />
+    <Content Include="AdminLTE-3.0.4\colorlib-error\fonts\fontawesome-webfont.ttf" />
+    <Content Include="AdminLTE-3.0.4\colorlib-error\fonts\fontawesome-webfont.woff" />
+    <Content Include="AdminLTE-3.0.4\colorlib-error\fonts\fontawesome-webfont.woff2" />
+    <Content Include="AdminLTE-3.0.4\colorlib-error\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2309,6 +2320,7 @@
     <Content Include="Views\Message\NewMessage.cshtml" />
     <Content Include="Views\Message\GetInBoxMessageDetails.cshtml" />
     <Content Include="Views\Message\GetSendBoxMessageDetails.cshtml" />
+    <Content Include="Views\ErrorPage\Page404.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
