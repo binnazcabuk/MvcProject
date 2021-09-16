@@ -12,10 +12,10 @@ namespace MvcProject.Controllers
     public class AboutController : Controller
     {
         // GET: About
-        AboutManager aboutManager = new AboutManager(new EfAboutDal());
+        AboutManager _aboutManager = new AboutManager(new EfAboutDal());
         public ActionResult Index()
         {
-            var aboutValues = aboutManager.GetAll();
+            var aboutValues = _aboutManager.GetAll();
             return View(aboutValues);
         }
 
@@ -28,7 +28,7 @@ namespace MvcProject.Controllers
         [HttpPost]
         public ActionResult AddAbout(About about)
         {
-            aboutManager.Add(about);
+            _aboutManager.Add(about);
             return RedirectToAction("Index");
         }
 
@@ -37,9 +37,20 @@ namespace MvcProject.Controllers
             return PartialView();
         }
 
-        public ActionResult StatusActiveAndPassive(int id)
+        public ActionResult DeleteAbout(int id)
         {
-            
+            var reult = _aboutManager.GetById(id);
+
+            if (reult.AboutStatus == true)
+            {
+                reult.AboutStatus = false;
+            }
+            else
+            {
+                reult.AboutStatus = true;
+
+            }
+            _aboutManager.Delete(reult);
             return RedirectToAction("Index");
         }
     }

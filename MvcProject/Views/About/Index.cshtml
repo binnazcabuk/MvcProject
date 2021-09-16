@@ -1,31 +1,96 @@
 ﻿@using Entity.Concrete
 @model List<About>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Hakkımda Veri Listesi</h2>
-<table class="table table-bordered">
-    <tr>
-        <th>Id</th>
-        <th>Hakkımda</th>
 
-        <th>Aktif Yap</th>
-        <th>Pasif Yap</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        
 
-        <tr>
-            <th>@item.AboutID</th>
-            <td>@item.AboutDetails1</td>
-         
-            <td><a href="#" class="btn btn-warning">aktif</a></td>
-            <td><a href="#" class="btn btn-warning">pasif</a></td>
-        </tr>
-    }
-</table>
+<!DOCTYPE html>
+<html>
+@{ string status = "";}
+@{ string statusButton = "";}
 
-@Html.Action("AboutPartial","About")
+
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini">
+
+    <div>
+        <div class="row gx-5">
+            <div class="col" style="margin-top:10px; margin-bottom:5px;">
+
+            </div>
+            <div class="col-7" style="margin-top:15px; margin-bottom:5px; margin-right:15px;">
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Başlık İşlemleri</h3>
+
+                <div class="card-tools">
+
+                    <a>
+
+                        @Html.Action("AboutPartial", "About")
+                    </a>
+
+
+
+                </div>
+
+            </div>
+
+
+
+            <table class="table table-striped projects">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Hakkımda</th>
+                        <th>İşlem</th>
+                    </tr>
+                    </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        if (item.AboutStatus == true)
+                        {
+                            status = "Pasif Yap";
+                        }
+                        if (item.AboutStatus == false)
+                        {
+                            status = "Aktif Yap";
+                        }
+                        if (item.AboutStatus == true)
+                        {
+                            statusButton = "btn btn-danger";
+                        }
+                        if (item.AboutStatus == false)
+                        {
+                            statusButton = "btn btn-warning";
+                        }
+                        <tr>
+                            <th>@item.AboutID</th>
+                            <td>@item.AboutDetails1</td>
+                            <td><a href="/About/DeleteAbout/@item.AboutID" class="@statusButton">@status</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <!-- /.content -->
+</body>
+</html>
+
+
+
