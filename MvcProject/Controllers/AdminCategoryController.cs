@@ -14,6 +14,8 @@ namespace MvcProject.Controllers
     public class AdminCategoryController : Controller
     {
         CategoryManager categoryManager= new CategoryManager(new EfCategoryDal());
+        
+        [Authorize(Roles="B")]
         public ActionResult Index()
         {
             var categoryvalues = categoryManager.GetAll();

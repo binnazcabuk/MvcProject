@@ -21,7 +21,7 @@ namespace Business.Concrete
        // [CacheAspect(typeof(MemoryCacheManager))]
         public List<Message> GetAllInbox()
         {
-            return _messageDal.List(x => x.ReceiverMail == "binnaz@gmail.com");
+            return _messageDal.List(x => x.ReceiverMail == "binnaz@gmail.com" && x.MessageStatus==true);
         }
 
         
@@ -46,12 +46,25 @@ namespace Business.Concrete
        // [CacheRemoveAspect(typeof(MemoryCacheManager))]
         public void Delete(Message message)
         {
-            _messageDal.Delete(message);
+            _messageDal.Update(message);
         }
-
+        public List<Message> GetListUnRead()
+        {
+            return _messageDal.List(x => x.ReceiverMail == "binnaz@gmail.com").Where(x => x.IsRead == false).ToList();
+        }
         public List<Message> GetAllSendbox()
         {
             return _messageDal.List(x => x.SenderMail == "binnaz@gmail.com");
+        }
+
+        public List<Message> GetListTrash()
+        {
+            return _messageDal.List(x => x.ReceiverMail == "binnaz@gmail.com" && x.MessageStatus ==false);
+        }
+
+        public void TrashDelete(Message message)
+        {
+            _messageDal.Delete(message);
         }
     }
 }

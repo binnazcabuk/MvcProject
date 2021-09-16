@@ -1,10 +1,9 @@
 ﻿@model Entity.Concrete.Message
 
 @{
-    ViewBag.Title = "GetInBoxMessageDetails";
+    ViewBag.Title = "GetTrashMessageDetails";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
 <!DOCTYPE html>
 <html>
 
@@ -14,7 +13,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Mesaj Sayfası</h1>
+                    <h1>Çöp Kutusu</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -29,7 +28,7 @@
                     <div class="card card-primary card-outline">
                         <div class="card-header">
                             <h3 class="card-title">
-                                <a href="/Message/Inbox" class="btn btn-tool" data-toggle="tooltip" title="Previous"><i class="fa fa-arrow-circle-left"></i></a>Gelen Mesaj
+                                <a href="/Message/TrashMessage" class="btn btn-tool" data-toggle="tooltip" title="Previous"><i class="fa fa-arrow-circle-left"></i></a>Gelen Mesaj
                             </h3>
                             <div class="card-tools">
                                 <a href="#" class="btn btn-tool" data-toggle="tooltip" title="Previous"><i class="fas fa-chevron-left"></i></a>
@@ -51,29 +50,29 @@
                                 <p>@Html.DisplayFor(x => x.MessageContent)</p>
                             </div>
                             <!-- /.mailbox-read-info -->
- 
-                            
-                                <div class="mailbox-controls with-border text-center">
-                                    <div class="btn-group">
-                                        
-                                        <a class="btn btn-default btn-sm" title="Çöp Kutusuna Taşı" href="/Message/MessageDelete/@Model.MessageId">
-                                            <i class="far fa-trash-alt">
-                                            </i>
-                                           
-                                        </a>
-                                        <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Reply">
-                                            <i class="fas fa-reply"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Forward">
-                                            <i class="fas fa-share"></i>
-                                        </button>
-                                    </div>
-                                    <!-- /.btn-group -->
-                                    <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Print">
-                                        <i class="fas fa-print"></i>
+
+
+                            <div class="mailbox-controls with-border text-center">
+                                <div class="btn-group">
+
+                                    <a class="btn btn-default btn-sm" title="Sil" href="/Message/TrashMessageDelete/@Model.MessageId">
+                                        <i class="far fa-trash-alt">
+                                        </i>
+
+                                    </a>
+                                    <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Reply">
+                                        <i class="fas fa-reply"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Forward">
+                                        <i class="fas fa-share"></i>
                                     </button>
                                 </div>
-                            
+                                <!-- /.btn-group -->
+                                <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Print">
+                                    <i class="fas fa-print"></i>
+                                </button>
+                            </div>
+
                             <!-- /.mailbox-controls -->
                             <!-- /.mailbox-read-message -->
                         </div>
@@ -89,5 +88,6 @@
     </section>
 </body>
 </html>
+
 
 

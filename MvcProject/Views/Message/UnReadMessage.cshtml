@@ -1,10 +1,8 @@
 ﻿@using Entity.Concrete
 @model List<Message>
 
-@{
-    ViewBag.Title = "Inbox";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
-}
+@{ ViewBag.Title = "UnReadMessage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
 
 @{ string message = "";}
 @{ string color = "";}
@@ -15,6 +13,7 @@
 <body class="hold-transition sidebar-mini">
 
     <!-- Content Wrapper. Contains page content -->
+    <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -32,7 +31,7 @@
             <div class="col-md-9">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">Gelen Kutusu</h3>
+                        <h3 class="card-title">Okunmamış Mesajlar</h3>
                         <div class="card-tools">
                             <div class="input-group input-group-sm">
                                 <input type="text" class="form-control" placeholder="Mail Ara">
@@ -48,7 +47,7 @@
                     <!-- /.card-header -->
                     <div class="card-body p-0">
                         <div class="mailbox-controls">
-                          
+                    
                             <div class="float-right">
                                 1-50/200
                                 <div class="btn-group">
@@ -66,19 +65,19 @@
                                     {
                                         if (item.IsRead == false)
                                         {
-                                            message = "Okunmadı";
+                                            message = "Okundu olarak İşaretle";
                                         }
                                         if (item.IsRead == true)
                                         {
-                                            message = "  Okundu";
+                                            message = "Okundu olarak İşaretlendi";
                                         }
                                         if (item.IsRead == false)
                                         {
-                                            color = "text-danger";
+                                            color = "btn btn-info btn-sm";
                                         }
                                         if (item.IsRead == true)
                                         {
-                                            color = "text-info"; //btn btn-danger
+                                            color = "btn btn-danger btn-sm";
                                         }
 
                                         <tr>
@@ -91,26 +90,19 @@
                                             <td class="mailbox-star"><a href="/Message/GetInBoxMessageDetails/@item.MessageId"><i class="fas fa-star text-warning"></i></a></td>
                                             <td class="mailbox-name"><a href="/Message/GetInBoxMessageDetails/@item.MessageId">@item.SenderMail</a></td>
                                             <td class="mailbox-subject">
-                                                @if (item.MessageContent.Length < 30)
-                                                {
-                                                    <b>@item.Subject</b><a> - </a> @item.MessageContent
-                                                }
-                                                else if (item.MessageContent.Length >= 30)
-                                                {
-                                                    <b>@item.Subject</b><a> - </a> @item.MessageContent.Substring(0, item.MessageContent.Substring(0, 30).LastIndexOf(" ")) <a> ... </a>
-                                                }
-                                                @*<b>@item.Subject</b> - @item.MessageContent.Substring(0, 1)*@
+                                                <b>@item.Subject</b> - @item.MessageContent.Substring(0, 1)
                                             </td>
                                             <td class="mailbox-attachment"></td>
-                                            <td class="mailbox-date"> @(((DateTime)item.MessageDate).ToString("dd-MMM-yyyy"))</td>
+                                            <td class="mailbox-date"> @(((DateTime)item.MessageDate).ToString("dd/MMM/yyyy"))</td>
                                             <td>
-                                                <a class="@color" href="#">
-                                                    
+                                                <a class="@color" href="/Message/IsRead/@item.MessageId">
+                                                    <i class="fas fa-pencil-alt">
+                                                    </i>
                                                     @message
                                                 </a>
                                             </td>
                                         </tr>
-                                    }
+}
                                 </tbody>
                             </table>
                             <!-- /.table -->
@@ -129,4 +121,3 @@
 
 </body>
 </html>
-

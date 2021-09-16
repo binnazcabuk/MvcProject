@@ -1,13 +1,11 @@
-﻿@using Entity.Concrete
+﻿
+@using Entity.Concrete
 @model List<Message>
 
 @{
-    ViewBag.Title = "Inbox";
+    ViewBag.Title = "TrashMessage";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-@{ string message = "";}
-@{ string color = "";}
 
 <!DOCTYPE html>
 <html>
@@ -32,7 +30,7 @@
             <div class="col-md-9">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">Gelen Kutusu</h3>
+                        <h3 class="card-title">Çöp Kutusu</h3>
                         <div class="card-tools">
                             <div class="input-group input-group-sm">
                                 <input type="text" class="form-control" placeholder="Mail Ara">
@@ -48,7 +46,7 @@
                     <!-- /.card-header -->
                     <div class="card-body p-0">
                         <div class="mailbox-controls">
-                          
+                           
                             <div class="float-right">
                                 1-50/200
                                 <div class="btn-group">
@@ -62,25 +60,9 @@
                         <div class="table-responsive mailbox-messages">
                             <table class="table table-hover table-striped">
                                 <tbody>
+
                                     @foreach (var item in Model)
                                     {
-                                        if (item.IsRead == false)
-                                        {
-                                            message = "Okunmadı";
-                                        }
-                                        if (item.IsRead == true)
-                                        {
-                                            message = "  Okundu";
-                                        }
-                                        if (item.IsRead == false)
-                                        {
-                                            color = "text-danger";
-                                        }
-                                        if (item.IsRead == true)
-                                        {
-                                            color = "text-info"; //btn btn-danger
-                                        }
-
                                         <tr>
                                             <td>
                                                 <div class="icheck-primary">
@@ -88,8 +70,8 @@
                                                     <label for="check1"></label>
                                                 </div>
                                             </td>
-                                            <td class="mailbox-star"><a href="/Message/GetInBoxMessageDetails/@item.MessageId"><i class="fas fa-star text-warning"></i></a></td>
-                                            <td class="mailbox-name"><a href="/Message/GetInBoxMessageDetails/@item.MessageId">@item.SenderMail</a></td>
+                                            <td class="mailbox-star"><a href="/Message/GetTrashMessageDetails/@item.MessageId"><i class="fas fa-star text-warning"></i></a></td>
+                                            <td class="mailbox-name"><a href="/Message/GetTrashMessageDetails/@item.MessageId">@item.SenderMail</a></td>
                                             <td class="mailbox-subject">
                                                 @if (item.MessageContent.Length < 30)
                                                 {
@@ -103,22 +85,18 @@
                                             </td>
                                             <td class="mailbox-attachment"></td>
                                             <td class="mailbox-date"> @(((DateTime)item.MessageDate).ToString("dd-MMM-yyyy"))</td>
-                                            <td>
-                                                <a class="@color" href="#">
-                                                    
-                                                    @message
-                                                </a>
-                                            </td>
+                                            
+                                            
                                         </tr>
                                     }
-                                </tbody>
+                                    </tbody>
                             </table>
                             <!-- /.table -->
                         </div>
                         <!-- /.mail-box-messages -->
                     </div>
                     <!-- /.card-body -->
-                   
+
                 </div>
                 <!-- /.card -->
             </div>
@@ -129,4 +107,6 @@
 
 </body>
 </html>
+
+
 

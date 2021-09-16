@@ -14,6 +14,7 @@ namespace MvcProject.Controllers
     {
         // GET: Contact
         ContactManager _contactManager = new ContactManager(new EfContactDal());
+        MessageManager _messageManager = new MessageManager(new EfMessageDal());
         ContactValidator contactValidator = new ContactValidator();
         Context _context = new Context();
 
@@ -36,12 +37,14 @@ namespace MvcProject.Controllers
             var contacts = _contactManager.GetAll().Count();
             ViewBag.contact = contacts;
 
-            var inbox = _context.Messages.Count(x => x.ReceiverMail == "binnaz@gmail.com").ToString();
+            var inbox = _messageManager.GetListUnRead().Count();
             ViewBag.inbox = inbox;
 
-            var sendbox = _context.Messages.Count(x => x.SenderMail == "binnaz@gmail.com").ToString();
-            ViewBag.sendbox= sendbox;
+            var inbox2 = _messageManager.GetAllInbox().Count();
+            ViewBag.inbox2 = inbox2;
 
+            var trash = _messageManager.GetListTrash().Count();
+            ViewBag.trash = trash;
 
             return PartialView();
         }
