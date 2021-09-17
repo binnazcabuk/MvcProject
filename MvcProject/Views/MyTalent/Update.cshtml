@@ -1,0 +1,78 @@
+﻿
+@model Entity.Concrete.MyTalent
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card-header">
+    <h2 class="card-title">Yetenek Güncelleme</h2>
+
+</div>
+<br />
+@using (Html.BeginForm("Update", "MyTalent", FormMethod.Post))
+{
+    <div class="form-group" style="width:auto">
+        @Html.Label(" ID", new { @style = "width:70px;" })
+        @Html.TextBoxFor(x => x.SkillID, new { @style = "width:450px;" })
+        <br />
+        @Html.Label("Adı", new { @style = "width:70px;" })
+
+        @Html.TextBoxFor(x => x.FirstName, new { @style = "width:450px;" })
+        <br />
+
+        @Html.Label("Hakkında", new { @style = "width:70px;" })
+
+        @Html.TextBoxFor(x => x.AboutShort, new { @style = "width:450px;" })
+        <br />
+
+        @Html.Label("Resim ", new { @style = "width:70px;" })
+
+        @Html.TextBoxFor(x => x.ImagePath, new { @style = "width:450px;" })
+        <br />
+        <br />
+        @Html.Label("Yetenek 1")
+
+        @Html.TextBoxFor(x => x.Skill1, new { @style = "width:300px;" })
+
+        @Html.Label("Oran 1")
+        @Html.TextBoxFor(x => x.Rate1, new { @style = "width:100px; " })
+        <br />
+
+        @Html.Label("Yetenek 2 ")
+        @Html.TextBoxFor(x => x.Skill2, new { @style = "width:300px;" })
+
+
+        @Html.Label("Oran 2")
+        @Html.TextBoxFor(x => x.Rate2, new { @style = "width:100px; " })
+        <br />
+        @Html.Label("Yetenek 3")
+        @Html.TextBoxFor(x => x.Skill3, new { @style = "width:300px;" })
+
+        @Html.Label("Oran 3")
+        @Html.TextBoxFor(x => x.Rate3, new { @style = "width:100px; " })
+        <br />
+        @Html.Label("Yetenek 4")
+        @Html.TextBoxFor(x => x.Skill4, new { @style = "width:300px;" })
+
+        @Html.Label("Oran 4")
+        @Html.TextBoxFor(x => x.Rate4, new { @style = "width:100px; " })
+        <br />
+        @Html.Label("Yetenek 5")
+        @Html.TextBoxFor(x => x.Skill5, new { @style = "width:300px;" })
+
+        @Html.Label("Oran 5")
+        @Html.TextBoxFor(x => x.Rate5, new { @style = "width:100px; " })
+        <br />
+        @Html.Label("Yetenek 6")
+        @Html.TextBoxFor(x => x.Skill6, new { @style = "width:300px;" })
+
+        @Html.Label("Oran 6")
+        @Html.TextBoxFor(x => x.Rate6, new { @style = "width:100px; " })
+        <br />
+        <br />
+
+        <button class="btn btn-info">Güncelle</button>
+    </div>
+
+}
