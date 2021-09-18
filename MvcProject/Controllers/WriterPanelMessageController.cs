@@ -1,28 +1,51 @@
 ﻿using Business.Concrete;
 using Business.ValidationRules;
-using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entity.Concrete;
 using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
+
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace MvcProject.Controllers
 {
-    public class MessageController : Controller
+    public class WriterPanelMessageController : Controller
     {
+        // GET: WriterPanelMessage
+
         MessageManager _messageManager = new MessageManager(new EfMessageDal());
         MessageValidator _validations = new MessageValidator();
-       
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         public ActionResult Inbox()
         {
-            
-                
+
+
             var messageList = _messageManager.GetAllInbox();
             return View(messageList);
+        }
+        public PartialViewResult MessagePartial() {
+
+            
+
+            var inbox = _messageManager.GetListUnRead().Count();
+            ViewBag.inbox = inbox;
+
+            var inbox2 = _messageManager.GetAllInbox().Count();
+            ViewBag.inbox2 = inbox2;
+
+            var trash = _messageManager.GetListTrash().Count();
+            ViewBag.trash = trash;
+
+            return PartialView();
         }
 
         public ActionResult Sendbox()
@@ -36,10 +59,11 @@ namespace MvcProject.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult NewMessage(Message message)
         {
-            
+
             ValidationResult result = _validations.Validate(message);
             if (result.IsValid)
             {
@@ -103,7 +127,7 @@ namespace MvcProject.Controllers
         public ActionResult TrashMessageDelete(int id)
         {
             var r = _messageManager.GetById(id);
-           _messageManager.TrashDelete(r);
+            _messageManager.TrashDelete(r);
             return RedirectToAction("TrashMessage");
         }
 

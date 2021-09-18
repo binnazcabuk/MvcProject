@@ -146,6 +146,8 @@
     <Compile Include="Controllers\MyTalentController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\WriterController.cs" />
+    <Compile Include="Controllers\WriterPanelController.cs" />
+    <Compile Include="Controllers\WriterPanelMessageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -241,6 +243,9 @@
     <Content Include="AdminLTE-3.0.4\dist\js\pages\dashboard.js" />
     <Content Include="AdminLTE-3.0.4\dist\js\pages\dashboard2.js" />
     <Content Include="AdminLTE-3.0.4\dist\js\pages\dashboard3.js" />
+    <Content Include="AdminLTE-3.0.4\dist\js\sweetalert.css" />
+    <Content Include="AdminLTE-3.0.4\dist\js\sweetalert.js" />
+    <Content Include="AdminLTE-3.0.4\dist\js\sweetalert.min.js" />
     <Content Include="AdminLTE-3.0.4\docs\404.html" />
     <Content Include="AdminLTE-3.0.4\docs\assets\css\adminlte.css" />
     <Content Include="AdminLTE-3.0.4\docs\assets\css\adminlte.min.css" />
@@ -2463,6 +2468,20 @@
     <Content Include="Views\Message\GetTrashMessageDetails.cshtml" />
     <Content Include="Views\MyTalent\Index.cshtml" />
     <Content Include="Views\MyTalent\Update.cshtml" />
+    <Content Include="Views\Shared\_WriterLayout.cshtml" />
+    <Content Include="Views\WriterPanel\WriterProfile.cshtml" />
+    <Content Include="Views\WriterPanel\MyHeading.cshtml" />
+    <Content Include="Views\WriterPanel\NewHeading.cshtml" />
+    <Content Include="Views\WriterPanel\UpdateHeading.cshtml" />
+    <Content Include="Views\WriterPanelMessage\Inbox.cshtml" />
+    <Content Include="Views\WriterPanelMessage\MessagePartial.cshtml" />
+    <Content Include="Views\WriterPanelMessage\GetInBoxMessageDetails.cshtml" />
+    <Content Include="Views\WriterPanelMessage\GetSendBoxMessageDetails.cshtml" />
+    <Content Include="Views\WriterPanelMessage\TrashMessage.cshtml" />
+    <Content Include="Views\WriterPanelMessage\GetTrashMessageDetails.cshtml" />
+    <Content Include="Views\WriterPanelMessage\Sendbox.cshtml" />
+    <Content Include="Views\WriterPanelMessage\UnReadMessage.cshtml" />
+    <Content Include="Views\WriterPanelMessage\NewMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
