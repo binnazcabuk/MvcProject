@@ -8,10 +8,12 @@ using System.Web.Mvc;
 using System.Web.Security;
 namespace MvcProject.Controllers
 {
+   [AllowAnonymous]
     public class LoginController : Controller
     {
         // GET: Login
         [HttpGet]
+        
         public ActionResult Index()
         {
             return View();
@@ -32,7 +34,32 @@ namespace MvcProject.Controllers
                 return RedirectToAction("Index");
             }
 
+          
+        }
+        [HttpGet]
+
+     
+        public ActionResult WriterLogin()
+        {
             return View();
+        }
+        [HttpPost]
+        public ActionResult WriterLogin(Writer writer)
+        {
+            Context context = new Context();
+            var adminuserinfo = context.Writers.FirstOrDefault(x => x.WriterMail == writer.WriterMail && x.WriterPassword == writer.WriterPassword);
+            if (adminuserinfo != null)
+            {
+                FormsAuthentication.SetAuthCookie(adminuserinfo.WriterMail, false);
+                Session["WriterMail"] = adminuserinfo.WriterMail;
+                return RedirectToAction("MyContent", "WriterPanelContent");
+            }
+            else
+            {
+                return RedirectToAction("WriterLogin");
+            }
+
+           
         }
     }
 }

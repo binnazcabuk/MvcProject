@@ -146,6 +146,7 @@
     <Compile Include="Controllers\MyTalentController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\WriterController.cs" />
+    <Compile Include="Controllers\WriterPanelContentController.cs" />
     <Compile Include="Controllers\WriterPanelController.cs" />
     <Compile Include="Controllers\WriterPanelMessageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -346,6 +347,7 @@
     <Content Include="AdminLTE-3.0.4\login-form-14\css\bootstrap\_media.css" />
     <Content Include="AdminLTE-3.0.4\login-form-14\css\style.css" />
     <Content Include="AdminLTE-3.0.4\login-form-14\images\bg-1.jpg" />
+    <Content Include="AdminLTE-3.0.4\login-form-14\images\w1.jpg" />
     <Content Include="AdminLTE-3.0.4\login-form-14\index.html" />
     <Content Include="AdminLTE-3.0.4\login-form-14\js\bootstrap.min.js" />
     <Content Include="AdminLTE-3.0.4\login-form-14\js\jquery.min.js" />
@@ -2482,6 +2484,8 @@
     <Content Include="Views\WriterPanelMessage\Sendbox.cshtml" />
     <Content Include="Views\WriterPanelMessage\UnReadMessage.cshtml" />
     <Content Include="Views\WriterPanelMessage\NewMessage.cshtml" />
+    <Content Include="Views\WriterPanelContent\MyContent.cshtml" />
+    <Content Include="Views\Login\WriterLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

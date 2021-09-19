@@ -11,6 +11,7 @@ namespace Business.Abstract
     {
         List<Content> GetAll();
         List<Content> GetAllByHeadingId(int id);
+        List<Content> GetAllByWriterId(int id);
         Content GetById(int id);
         void Add(Content content);
         void Update(Content content);

@@ -1,5 +1,6 @@
 ﻿using Business.Concrete;
 using Business.ValidationRules;
+using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entity.Concrete;
 using FluentValidation.Results;
@@ -19,6 +20,9 @@ namespace MvcProject.Controllers
         WriterValidator validationRules = new WriterValidator();
         public ActionResult Index()
         {
+          
+
+
             var writerValues = _writerManager.GetAll();
             return View(writerValues);
         }

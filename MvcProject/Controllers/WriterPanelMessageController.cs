@@ -27,8 +27,6 @@ namespace MvcProject.Controllers
 
         public ActionResult Inbox()
         {
-
-
             var messageList = _messageManager.GetAllInbox();
             return View(messageList);
         }

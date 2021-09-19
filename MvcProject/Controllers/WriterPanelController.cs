@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entity.Concrete;
 using System;
@@ -13,18 +14,29 @@ namespace MvcProject.Controllers
     {
         // GET: WriterPanel
 
+
+        Context context = new Context();
+
+
         private HeadingManager _headingManager = new HeadingManager(new EfHeadingDal());
         CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
         public ActionResult WriterProfile()
         {
+           
+          
+           
             return View();
         }
-
-        public ActionResult MyHeading()
+      
+        public ActionResult MyHeading(string p)
         {
-          
-            var result = _headingManager.GetAllByWriter();
-            return View(result);
+         
+            p = (string)Session["WriterMail"];
+            var writeridinfo = context.Writers.Where(x => x.WriterMail == p)
+                .Select(y => y.WriterID).FirstOrDefault();
+
+            var contentValues = _headingManager.GetAllByWriter(writeridinfo);
+            return View(contentValues);
         }
         [HttpGet]
         public ActionResult NewHeading()
@@ -41,8 +53,12 @@ namespace MvcProject.Controllers
         [HttpPost]
         public ActionResult NewHeading(Heading heading )
         {
+            string w = (string)Session["WriterMail"];
+            var writeridinfo = context.Writers.Where(x => x.WriterMail == w)
+                .Select(y => y.WriterID).FirstOrDefault();
+
             heading.HeadingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-            heading.WriterID = 4;
+            heading.WriterID = writeridinfo;
             heading.HeadingStatus = true;
             _headingManager.Add(heading);
             return RedirectToAction("MyHeading");
@@ -67,6 +83,7 @@ namespace MvcProject.Controllers
         [HttpPost]
         public ActionResult UpdateHeading(Heading heading)
         {
+            heading.HeadingStatus = true;
             _headingManager.Update(heading);
             return RedirectToAction("MyHeading");
         }
