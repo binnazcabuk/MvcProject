@@ -12,6 +12,7 @@ namespace Business.Abstract
         List<Heading> GetAll();
         List<Heading> GetAllByWriter(int id);
         Heading GetById(int id);
+      
         void Add(Heading heading);
         void Update(Heading heading);
         void Delete(Heading heading);

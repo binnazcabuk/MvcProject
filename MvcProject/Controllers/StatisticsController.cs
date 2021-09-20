@@ -34,12 +34,9 @@ namespace MvcProject.Controllers
                 .Select(x => x.Key).FirstOrDefault()).Select(x => x.CategoryName).FirstOrDefault();
             ViewBag.categoryHeader = categoryHeader;
 
-            // Kategori tablosunda durumu true olan kategoriler ile false olan kategoriler arasındaki sayısal fark
-            var categoryStatusTrue = _context.Categories.Count(x => x.CategoryStatus == true);
-            var categoryStatusFalse = _context.Categories.Count(x => x.CategoryStatus == false);
+           
 
-            var result = categoryStatusTrue - categoryStatusFalse;
-            ViewBag.result = result;
+       
 
             return View();
         }

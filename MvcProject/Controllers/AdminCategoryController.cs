@@ -18,6 +18,7 @@ namespace MvcProject.Controllers
         [Authorize(Roles="B")]
         public ActionResult Index()
         {
+
             var categoryvalues = categoryManager.GetAll();
             return View(categoryvalues);
         }
@@ -35,6 +36,7 @@ namespace MvcProject.Controllers
 
             if (result.IsValid)
             {
+         
                 categoryManager.Add(category);
                 return RedirectToAction("Index");
             }
