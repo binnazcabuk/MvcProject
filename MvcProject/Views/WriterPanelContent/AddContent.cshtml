@@ -1,0 +1,60 @@
+﻿
+@model Entity.Concrete.Content
+
+@{
+    ViewBag.Title = "AddContent";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini">
+    <!-- /.navbar -->
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-">
+                <div class="col-sm-6">
+                    <h1>Yeni İçerik </h1>
+
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="card card-solid">
+            <div class="card-body pb-0">
+                <div class="row-cols-1">
+
+
+                    @using (Html.BeginForm("AddContent", "WriterPanelContent", FormMethod.Post))
+                    {
+                        <div class="form-group">
+
+                            <input type="hidden" name="HeadingID" value="@ViewBag.d" />
+                           
+
+                            @Html.Label("İçerik Yaz:")
+                            @Html.TextAreaFor(x => x.ContentValue, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.ContentValue)
+                            <br />
+                           
+                            <button class="btn btn-outline-success">Ekle</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <!-- /.card -->
+    </section>
+    <!-- /.content -->
+</body>
+</html>
+
+

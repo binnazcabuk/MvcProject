@@ -2,15 +2,12 @@
 @model List<Heading>
 
 @{
-    ViewBag.Title = "MyHeading";
+    ViewBag.Title = "AllHeading";
     Layout = "~/Views/Shared/_WriterLayout.cshtml";
 }
 
 
-
 @{ string color = "";}
-
-
 
 
 <!DOCTYPE html>
@@ -39,10 +36,7 @@
 
                 <div class="card-tools">
 
-                    <a class="btn btn-tool" href="/WriterPanel/NewHeading" title="Yeni Başlık" style="color:darkgreen;">
-                        <i class="fas fa-plus"></i>
-                        Yeni Başlık
-                    </a>
+                  
 
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Aç/Kapat">
                         <i class="fas fa-minus"></i>
@@ -144,21 +138,17 @@
                                     <h5> <span class=" @color">@item.Category.CategoryName</span></h5>
                                 </td>
                                 <td class="project-actions text-right">
-                                    <a class="btn btn-primary btn-sm" href="/Default/Headings/">
+                                    <a class="btn btn-primary btn-sm" href="/Default/Headings/@item.HeadingID">
                                         <i class="fas fa-file-alt">
                                         </i>
                                         Yazılar
                                     </a>
-                                    <a class="btn btn-warning btn-sm" href="/WriterPanel/UpdateHeading/@item.HeadingID">
+                                    <a class="btn btn-warning btn-sm" href="/WriterPanelContent/AddContent/@item.HeadingID">
                                         <i class="fas fa-pencil-alt">
                                         </i>
-                                        Düzenle
+                                       Bu Başlığa Yaz
                                     </a>
-                                    <a class="btn btn-danger btn-sm"  href="/WriterPanel/DeleteHeading/@item.HeadingID">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Sil
-                                    </a>
+                                    
                                 </td>
                             </tr>
                         }
@@ -170,7 +160,9 @@
         <!-- /.card -->
     </section>
     <!-- /.content -->
-    
+
 </body>
 </html>
+
+
 

@@ -27,7 +27,13 @@ namespace MvcProject.Controllers
            
             return View();
         }
-      
+        public ActionResult AllHeading()
+        {
+            var headings = _headingManager.GetAll();
+
+
+            return View(headings);
+        }
         public ActionResult MyHeading(string p)
         {
          
