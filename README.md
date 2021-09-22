@@ -1,7 +1,7 @@
 # MvcProject
 <hr>
-(https://user-images.githubusercontent.com/34273337/134421277-7d8b7395-0028-41af-b9e0-1a9549716ed8.PNG)
-<hr>
+![sc_2](https://user-images.githubusercontent.com/34273337/134421710-f9661d85-94ee-491a-912f-83d755099cb1.PNG)
+
 ![sc_8](https://user-images.githubusercontent.com/34273337/134421292-850c3f24-9b54-4dca-99f2-ecbd63a104d0.PNG)
 <hr>
 ![sc_3](https://user-images.githubusercontent.com/34273337/134421302-829e9ca4-e4a4-40d4-8efd-56529254ad69.PNG)
