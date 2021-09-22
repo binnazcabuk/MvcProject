@@ -1,6 +1,6 @@
 # MvcProject
 
-![sc_2](https://user-images.githubusercontent.com/34273337/134421710-f9661d85-94ee-491a-912f-83d755099cb1.PNG)
+
 
 ![sc_8](https://user-images.githubusercontent.com/34273337/134421292-850c3f24-9b54-4dca-99f2-ecbd63a104d0.PNG)
 
