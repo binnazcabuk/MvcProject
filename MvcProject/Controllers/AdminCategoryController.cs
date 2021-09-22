@@ -15,7 +15,7 @@ namespace MvcProject.Controllers
     {
         CategoryManager categoryManager= new CategoryManager(new EfCategoryDal());
         
-        [Authorize(Roles="B")]
+        //[Authorize(Roles="B")]
         public ActionResult Index()
         {
 

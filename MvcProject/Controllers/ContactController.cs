@@ -32,18 +32,20 @@ namespace MvcProject.Controllers
             return View(contactValues);
         }
 
-        public PartialViewResult ContactPartial(string p)
+        public PartialViewResult ContactPartial()
         {
+            string p = (string)Session["WriterMail"];
+
             var contacts = _contactManager.GetAll().Count();
             ViewBag.contact = contacts;
 
-            var inbox = _messageManager.GetListUnRead().Count();
+            var inbox = _messageManager.GetListUnRead(p).Count();
             ViewBag.inbox = inbox;
 
-            var inbox2 = _messageManager.GetAllInbox().Count();
+            var inbox2 = _messageManager.GetAllInbox(p).Count();
             ViewBag.inbox2 = inbox2;
 
-            var trash = _messageManager.GetListTrash().Count();
+            var trash = _messageManager.GetListTrash(p).Count();
             ViewBag.trash = trash;
 
             return PartialView();

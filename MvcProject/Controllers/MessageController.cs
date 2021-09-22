@@ -16,19 +16,22 @@ namespace MvcProject.Controllers
     {
         MessageManager _messageManager = new MessageManager(new EfMessageDal());
         MessageValidator _validations = new MessageValidator();
-       
-        public ActionResult Inbox()
+
+       [Authorize]
+        public ActionResult Inbox(string p)
         {
-            
-                
-            var messageList = _messageManager.GetAllInbox();
+             p = (string)Session["WriterMail"];
+            ViewBag.d = p;
+
+            var messageList = _messageManager.GetAllAdminInbox();
             return View(messageList);
         }
 
         public ActionResult Sendbox()
         {
+            string p = (string)Session["WriterMail"];
 
-            var messageList = _messageManager.GetAllSendbox();
+            var messageList = _messageManager.GetAllAdminSendbox();
             return View(messageList);
         }
         [HttpGet]
@@ -36,15 +39,18 @@ namespace MvcProject.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult NewMessage(Message message)
         {
-            
+            string p = (string)Session["WriterMail"];
+
             ValidationResult result = _validations.Validate(message);
             if (result.IsValid)
             {
                 message.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
                 message.MessageStatus = true;
+                message.SenderMail = p;
                 _messageManager.Add(message);
                 return RedirectToAction("Sendbox");
             }
@@ -83,16 +89,33 @@ namespace MvcProject.Controllers
             _messageManager.Update(result);
             return RedirectToAction("UnReadMessage");
         }
+        public PartialViewResult MessagePartial()
+        {
 
+
+           
+            var inbox = _messageManager.GetListAdminUnRead().Count();
+            ViewBag.inbox = inbox;
+
+            var inbox2 = _messageManager.GetAllAdminInbox().Count();
+            ViewBag.inbox2 = inbox2;
+
+            var trash = _messageManager.GetListAdminTrash().Count();
+            ViewBag.trash = trash;
+
+            return PartialView();
+        }
         public ActionResult UnReadMessage()
         {
-            var unReadMessage = _messageManager.GetListUnRead();
+    
+            var unReadMessage = _messageManager.GetListAdminUnRead();
             return View(unReadMessage);
         }
 
         public ActionResult TrashMessage()
         {
-            var trashMessage = _messageManager.GetListTrash();
+            string p = (string)Session["WriterMail"];
+            var trashMessage = _messageManager.GetListAdminTrash();
             return View(trashMessage);
         }
         public ActionResult GetTrashMessageDetails(int id)

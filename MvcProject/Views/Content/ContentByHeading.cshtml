@@ -18,9 +18,17 @@
                 <!-- Timelime example  -->
                 <div class="row">
                     <div class="col-md-12">
+                        <span class="bg-success">
+                            <a href="/Heading/Index" class="btn btn-tool" data-toggle="tooltip" title="Previous">
+                                <i class="fa fa-arrow-circle-left"></i>Geri Dön
+                            </a>
+                        </span>
+                        <br />
+                        
                         <!-- The time line -->
                         <div class="timeline">
                             <!-- timeline time label -->
+
 
                             @foreach (var item in Model)
                             {
@@ -36,7 +44,7 @@
                                     <div class="timeline-item">
                                         <h3 class="timeline-header"><a href="#">@item.Writer.WriterName @item.Writer.WriterSurName </a> </h3>
                                         <div class="timeline-body">
-                                           @item.ContentValue
+                                            @item.ContentValue
                                         </div>
                                     </div>
                                 </div>

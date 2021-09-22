@@ -24,7 +24,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-            @Html.Action("ContactPartial", "Contact")
+            @Html.Action("MessagePartial", "Message")
             <!-- /.col -->
             <div class="col-md-9">
                 <div class="card card-primary card-outline">
@@ -46,7 +46,7 @@
                     <div class="card-body p-0">
                         <div class="mailbox-controls">
                             <!-- Check all button -->
-                        
+
                             <div class="float-right">
                                 1-50/200
                                 <div class="btn-group">
@@ -86,7 +86,6 @@
                                             <td class="mailbox-attachment"></td>
                                             <td class="mailbox-date"> @(((DateTime)item.MessageDate).ToString("dd-MMM-yyyy"))</td>
                                             <td>
-                                                
                                             </td>
                                         </tr>
                                     }

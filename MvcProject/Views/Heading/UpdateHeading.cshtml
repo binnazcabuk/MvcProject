@@ -16,7 +16,9 @@
         <div class="container-fluid">
             <div class="row mb-">
                 <div class="col-sm-6">
-                    <h1>Başlık Düzenleme</h1>
+                    <h1 class="card-title">
+                        <a href="/Heading/Index" class="btn btn-tool" data-toggle="tooltip" title="Previous"><i class="fa fa-arrow-circle-left"></i></a>Başlık Düzenle
+                    </h1>
 
                 </div>
             </div>
@@ -35,8 +37,8 @@
                     @using (Html.BeginForm("UpdateHeading", "Heading", FormMethod.Post))
                     {
                         <div class="form-group">
-                            @Html.Label("Başlık Id")
-                            @Html.TextBoxFor(x => x.HeadingID, new { @class = "form-control" })
+                          
+                            @Html.HiddenFor(x => x.HeadingID, new { @class = "form-control" })
                             <br />
                             @Html.Label("Başlık Adı")
                             @Html.TextBoxFor(x => x.HeadingName, new { @class = "form-control" })

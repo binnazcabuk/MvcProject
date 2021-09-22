@@ -1,6 +1,7 @@
 ﻿using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entity.Concrete;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +17,13 @@ namespace MvcProject.Controllers
         CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
         WriterManager _writerManager = new WriterManager(new EfWriterDal());
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var headingValues = _headingManager.GetAll();
-            return View(headingValues);
+            var headings = _headingManager.GetAll().ToPagedList(page ?? 1, 5);
+           
+            return View(headings);
         }
+        
 
         [HttpGet]
         public ActionResult AddHeading()
@@ -46,6 +49,7 @@ namespace MvcProject.Controllers
         public ActionResult AddHeading(Heading heading)
         {
             heading.HeadingDate=DateTime.Parse(DateTime.Now.ToShortDateString());
+            heading.HeadingStatus = true;
             _headingManager.Add(heading);
             return RedirectToAction("Index");
         }
@@ -90,7 +94,13 @@ namespace MvcProject.Controllers
             return RedirectToAction("Index");
         }
 
-      
+        public ActionResult HeadingReport()
+        {
+            var headingvalues = _headingManager.GetAll();
+            return View(headingvalues);
+        }
+
+
 
     }
 }

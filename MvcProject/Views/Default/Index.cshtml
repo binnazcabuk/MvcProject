@@ -1,8 +1,7 @@
-﻿
-@using Entity.Concrete
+﻿@using Entity.Concrete
 @model List<Content>
 
-
+<br>
 <!DOCTYPE html>
 <html>
 <body class="hold-transition sidebar-mini">
@@ -17,30 +16,24 @@
                         <!-- The time line -->
                         <div class="timeline">
                             <!-- timeline time label -->
-
                             @foreach (var item in Model)
                             {
-
-
-                              
-                            
+                                <div class="time-label">
+                                    <span class="bg-success">@(((DateTime)item.ContentDate).ToString("dd-MMM-yyy")) / @item.Writer.WriterName @item.Writer.WriterSurName</span>
+                                </div>
+                                <!-- /.timeline-label -->
+                                <!-- timeline item -->
                                 <div>
                                     <i class="fas fa-comment bg-yellow"></i>
                                     <div class="timeline-item">
-                                        <h3 class="timeline-header">
-                                            <a href="#">@item.Heading.HeadingName </a>
-                                            <span class="mailbox-read-time float-right">@(((DateTime)item.ContentDate).ToString("dd-MMM-yyyy"))</span>
-                                        </h3>
+                                        <h3 class="timeline-header"><a href="#">@item.Heading.HeadingName</a></h3>
                                         <div class="timeline-body">
                                             @item.ContentValue
-
-                                            <span class="mailbox-read-time float-right"> @item.Writer.WriterName @item.Writer.WriterSurName</span>
-                                            
                                         </div>
                                     </div>
                                 </div>
+                                <!-- END timeline item -->
                             }
-                            <!-- END timeline item -->
                         </div>
                     </div>
                     <!-- /.col -->
@@ -53,8 +46,3 @@
     <!-- ./wrapper -->
 </body>
 </html>
-
-
-
-
-

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace MvcProject.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -13,7 +14,11 @@ namespace MvcProject.Controllers
             
             return View();
         }
+        public ActionResult HomePage()
+        {
 
+            return View();
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

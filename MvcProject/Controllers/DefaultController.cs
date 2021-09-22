@@ -1,8 +1,9 @@
 ﻿using Business.Concrete;
 using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework;
+
 using System;
-using System.Collections.Generic;
+
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,7 +14,7 @@ namespace MvcProject.Controllers
     public class DefaultController : Controller
     {
         // GET: Default
-      
+
         Context _context = new Context();
         HeadingManager _headingManager = new HeadingManager(new EfHeadingDal());
         ContentManager _contentManager = new ContentManager(new EfContentDal());
@@ -24,6 +25,10 @@ namespace MvcProject.Controllers
          
             return View(headinglist);
         }
+
+        
+
+       
 
         public PartialViewResult Index(int id=0)
         {

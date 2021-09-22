@@ -1,0 +1,252 @@
+﻿
+
+@model  MvcProject.Models.ViewModel
+
+
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>ekşi sözlük - kutsal bilgi kaynağı</title>
+    <link title="ekşi sözlük" rel="search" type="application/opensearchdescription+xml" href="/odesc.xml">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic,600&subset=latin,latin-ext">
+    <link rel="stylesheet" href="~/Content/PagedList.css" />
+    <link id="ad-theme" rel="stylesheet" type="text/css" href="~/AdminLTE-3.0.4/web2/css/eksi.css" />
+
+
+
+    <script>
+        dataLayer = [{
+            'elogin': '0',
+            'esubdom': 'eksisozluk',
+            'etitle': '',
+            'ecat1': 'magazin',
+            'econtentid': '',
+            'epagetype': 'main',
+            'epublishdate': '',
+            'epublishtime': '',
+            'econtenttype': '',
+            'efiltre': '',
+            'adu': '',
+        }];
+    </script>
+
+
+
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="//ekstat.com/img/safari-pinned-tab.svg" color="#81C14B">
+    <meta name="apple-mobile-web-app-title" content="ekşi sözlük">
+    <meta name="application-name" content="ekşi sözlük">
+    <meta name="theme-color" content="#ffffff">
+
+
+
+
+
+</head>
+<body class="light-theme theme-enabled" itemscope itemtype="http://schema.org/WebPage">
+
+
+    <header itemscope itemtype="http://schema.org/WPHeader">
+        <div id="top-bar" class="loggedoff">
+            <div id="logo">
+
+                <a tabindex="-1" href="/">ekşi sözlük</a>
+            </div>
+            <form action="/" method="get" id="search-form" class="inline" role="search">
+                <input type="text" placeholder="başlık, #entry, &#64;yazar" id="search-textbox" accesskey="b"
+                       name="q" maxlength="145" />
+                <span class="spin">↻</span>
+                <button type="submit" aria-label="getir">
+                    <svg class="eksico"><use xlink:href="#eksico-search"></use></svg>
+                </button>
+                <a id="a3-toggle" href="#" accesskey="a">&nbsp;</a>
+            </form>
+
+            <div id="auto-complete-result" style="display: none"></div>
+
+            <nav id="top-navigation" class="" itemscope itemtype="http://schema.org/SiteNavigationElement">
+                <ul>
+                    <li class="mobile-only"><a href="/basliklar/m/populer" title="dünyamızda neler olup bitiyor">gündem</a></li>
+                    <li class="mobile-only"><a href="/m/debe" title="dünün en beğenilen entry&#39;leri">debe</a></li>
+                    <li class="mobile-only"><a href="/basliklar/m/sorunsal" title="dünyamızda neler olup bitiyor">sorunsallar</a></li>
+                    <li>
+                        <a id="top-login-link" href="/Login/Index">
+                            Admin Giriş
+                        </a>
+                    </li>
+                    <li>
+                        <a id="top-registration-link" href="/Login/WriterLogin">
+                            Yazar Giriş
+                        </a>
+                    </li>
+
+
+                </ul>
+            </nav>
+            <div style="clear: both;"></div>
+
+            <nav id="sub-navigation">
+                <ul id="quick-index-nav">
+                    <li><a href="/basliklar/gundem" title="dünyamızda neler olup bitiyor">gündem</a></li>
+                    <li><a href="/debe" title="dünün en beğenilen entry&#39;leri">debe</a></li>
+                    <li><a href="/basliklar/sorunsal" title="dünyamızda neler olup bitiyor">sorunsallar</a></li>
+
+                    <li class="nav-channel-item"><a class="index-link" href="/basliklar/kanal/spor" title="futbol, basketbol, tenis ve curling gibi ata sporları">#spor</a></li>
+                    <li class="nav-channel-item"><a class="index-link" href="/basliklar/kanal/ili%C5%9Fkiler" title="sevgili, eski sevgili ve hoşlanılan kız">#ilişkiler</a></li>
+                    <li class="nav-channel-item"><a class="index-link" href="/basliklar/kanal/siyaset" title="partiler, politikacılar, terör, savaş kan ve korku">#siyaset</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" title="kanallar">
+                            <svg class="eksico"><use xlink:href="#eksico-dots"></use></svg>
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </nav>
+
+        </div>
+    </header>
+
+
+
+
+
+
+    <div id="container">
+
+
+        <div id="index-section" class="robots-nocontent main-left-frame">
+
+            <nav id="partial-index" itemscope itemtype="http://schema.org/SiteNavigationElement">
+
+
+
+                <div class="clearfix dropdown  ">
+                    <h2 title="220 başlık">
+                        gündem
+                        <a class="channel-filter-toggle" accesskey="a">
+                            <svg class="eksico"><use xlink:href="#eksico-gear"></use></svg>
+                        </a>
+                    </h2>
+                </div>
+
+
+
+                <ul class="topic-list partial">
+                    @foreach (var item in Model.Headings)
+                    {
+
+                        <li>
+                            <a href="/Default/SozlukIndex/"> @item.HeadingName <small>141</small></a>
+                        </li>
+
+                    }
+                </ul>
+
+
+                <div class="quick-index-continue-link-container"><a class="index-link" href="/basliklar/gundem?p=2" id="quick-index-continue-link">daha da ...</a></div>
+
+
+            </nav>
+
+        </div>
+
+        <div id="main">
+
+            <div id="content" class="instapaper_body" role="main">
+                <section id="content-body">
+                    <div id="topic">
+                        @foreach (var item in Model.Contents)
+                        {
+                            <h1 id="title" data-id="5303827">
+
+
+                                <a href="/HomePage/AddContent/" itemprop="url">
+                                    <span itemprop="name">@item.Heading.HeadingName</span>
+                                </a>
+
+                            </h1>
+
+                            <ul id="entry-item-list" class="home-page-entry-list" style="margin-bottom:50px;">
+
+                                <li data-id="66335126" data-author="volkanslim" data-author-id="1460044" data-flags="share report vote" data-isfavorite="false" data-ispinned="false" data-favorite-count="601" data-seyler-slug="" data-comment-count="0">
+                                    <div class="content">
+                                        @item.ContentValue
+                                    </div>
+                                    <footer>
+                                        <div class="feedback"></div>
+                                        <div class="info">
+
+                                            <a class="entry-date permalink" href="/entry/66335126">@item.ContentDate</a>
+
+                                            <a class="entry-author" href="/biri/volkanslim">@item.Writer.WriterName @item.Writer.WriterSurName</a>
+                                        </div>
+                                    </footer>
+                                    <div class="comment-summary">
+                                        <div class="comment-pages">
+                                        </div>
+                                    </div>
+                                </li>
+
+
+                            </ul>
+                        }
+
+
+                    </div>
+
+
+
+
+                </section>
+
+            </div>
+
+            <footer id="site-footer">
+                <ul>
+                    <li><a href="/iletisim">iletişim</a></li>
+                    <li><a href="/entry/125231929">şeffaflık raporu</a></li>
+                    <li><a href="/reklam">reklam</a></li>
+                    <li><a href="/sozluk-is-ilanlari--5895566">kariyer</a></li>
+                    <li><a href="/entry/19784395">kullanım koşulları</a></li>
+                    <li><a href="/entry/66470645">gizlilik politikamız</a></li>
+                    <li><a href="/entry/66762977" rel="help">sss</a></li>
+                    <li><a class="index-link" href="/istatistik">istatistikler</a></li>
+                    <li><a href="/sub-etha">sub-etha</a></li>
+                    <li><a href="https://www.instagram.com/sozluk" rel="noopener" target="_blank">instagram</a></li>
+                    <li><a href="http://twitter.com/sozluk" rel="noopener" target="_blank">twitter</a></li>
+                    <li><a href="http://www.facebook.com/eksisozluk" rel="noopener" target="_blank">facebook</a></li>
+                </ul>
+            </footer>
+
+        </div>
+    </div>
+    <div id="user-notifications">
+        <ul></ul>
+    </div>
+
+
+
+
+    <!-- Google Tag Manager (noscript) -->
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WXV2Z47"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    <!-- End Google Tag Manager (noscript) -->
+
+
+
+</body>
+</html>

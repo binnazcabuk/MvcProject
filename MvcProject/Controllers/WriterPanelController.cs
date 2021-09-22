@@ -1,7 +1,10 @@
 ﻿using Business.Concrete;
+using Business.ValidationRules;
 using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entity.Concrete;
+using FluentValidation.Results;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,23 +18,49 @@ namespace MvcProject.Controllers
         // GET: WriterPanel
 
 
+        WriterValidator validationRules = new WriterValidator();
         Context context = new Context();
 
 
         private HeadingManager _headingManager = new HeadingManager(new EfHeadingDal());
+        WriterManager writerManager = new WriterManager(new EfWriterDal());
         CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
-        public ActionResult WriterProfile()
+        
+        [HttpGet]
+        public ActionResult WriterProfile(int id=0)
         {
+           string p = (string)Session["WriterMail"];
+            id = context.Writers.Where(x => x.WriterMail == p)
+                .Select(y => y.WriterID).FirstOrDefault();
+
+
+            var writervalue = writerManager.GetById(id);
            
-          
-           
+            return View(writervalue);
+        }
+
+        [HttpPost]
+        public ActionResult WriterProfile(Writer writer)
+        {
+            ValidationResult results = validationRules.Validate(writer);
+            if (results.IsValid)
+            {
+                writerManager.Update(writer);
+                return RedirectToAction("AllHeading","WriterPanel");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
             return View();
         }
-        public ActionResult AllHeading()
+        public ActionResult AllHeading(int? page)
         {
-            var headings = _headingManager.GetAll();
 
-
+            var headings = _headingManager.GetAll().ToPagedList(page ?? 1,4);
             return View(headings);
         }
         public ActionResult MyHeading(string p)

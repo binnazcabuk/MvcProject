@@ -1,5 +1,7 @@
 ﻿@using Entity.Concrete
-@model List<Heading>
+@model PagedList.IPagedList<Heading>
+@using PagedList
+@using PagedList.Mvc
 
 @{
     ViewBag.Title = "AllHeading";
@@ -12,7 +14,7 @@
 
 <!DOCTYPE html>
 <html>
-
+<link rel="stylesheet" href="~/Content/PagedList.css" />
 <body class="hold-transition sidebar-mini">
 
     <div>
@@ -36,7 +38,7 @@
 
                 <div class="card-tools">
 
-                  
+
 
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Aç/Kapat">
                         <i class="fas fa-minus"></i>
@@ -146,9 +148,9 @@
                                     <a class="btn btn-warning btn-sm" href="/WriterPanelContent/AddContent/@item.HeadingID">
                                         <i class="fas fa-pencil-alt">
                                         </i>
-                                       Bu Başlığa Yaz
+                                        Bu Başlığa Yaz
                                     </a>
-                                    
+
                                 </td>
                             </tr>
                         }
@@ -163,6 +165,5 @@
 
 </body>
 </html>
-
-
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("AllHeading", new { page }))
 

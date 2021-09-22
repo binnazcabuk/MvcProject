@@ -18,13 +18,17 @@ namespace Business.Concrete
             _messageDal = messageDal;
         }
 
-       // [CacheAspect(typeof(MemoryCacheManager))]
-        public List<Message> GetAllInbox()
+       
+        public List<Message> GetAllInbox(string p)
         {
-            return _messageDal.List(x => x.ReceiverMail == "binnaz@gmail.com" && x.MessageStatus==true);
+            return _messageDal.List(x => x.ReceiverMail == p && x.MessageStatus==true);
         }
 
-        
+        public List<Message> GetAllAdminInbox()
+        {
+            return _messageDal.List(x => x.ReceiverMail == "admin2@gmail.com" && x.MessageStatus == true);
+        }
+
 
         public Message GetById(int id)
         {
@@ -48,23 +52,38 @@ namespace Business.Concrete
         {
             _messageDal.Update(message);
         }
-        public List<Message> GetListUnRead()
+        public List<Message> GetListUnRead(string p)
         {
-            return _messageDal.List(x => x.ReceiverMail == "binnaz@gmail.com").Where(x => x.IsRead == false).ToList();
+            return _messageDal.List(x => x.ReceiverMail == p).Where(x => x.IsRead == false).ToList();
         }
-        public List<Message> GetAllSendbox()
+        public List<Message> GetAllSendbox(string p)
         {
-            return _messageDal.List(x => x.SenderMail == "binnaz@gmail.com");
+            return _messageDal.List(x => x.SenderMail == p);
         }
 
-        public List<Message> GetListTrash()
+        public List<Message> GetListTrash(string p)
         {
-            return _messageDal.List(x => x.ReceiverMail == "binnaz@gmail.com" && x.MessageStatus ==false);
+            return _messageDal.List(x => x.ReceiverMail == p && x.MessageStatus ==false);
         }
 
         public void TrashDelete(Message message)
         {
             _messageDal.Delete(message);
+        }
+
+        public List<Message> GetListAdminTrash()
+        {
+            return _messageDal.List(x => x.ReceiverMail == "admin2@gmail.com" && x.MessageStatus == false);
+        }
+
+        public List<Message> GetListAdminUnRead()
+        {
+            return _messageDal.List(x => x.ReceiverMail == "admin2@gmail.com").Where(x => x.IsRead == false).ToList();
+        }
+
+        public List<Message> GetAllAdminSendbox()
+        {
+            return _messageDal.List(x => x.SenderMail == "admin2@gmail.com");
         }
     }
 }

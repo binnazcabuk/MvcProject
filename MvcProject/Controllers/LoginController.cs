@@ -1,4 +1,6 @@
-﻿using DataAccess.Concrete;
+﻿using Business.Concrete;
+using DataAccess.Concrete;
+using DataAccess.Concrete.EntityFramework;
 using Entity.Concrete;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,8 @@ namespace MvcProject.Controllers
    [AllowAnonymous]
     public class LoginController : Controller
     {
+
+        WriterLoginManager _writerLoginManager = new WriterLoginManager(new EfWriterDal());
         // GET: Login
         [HttpGet]
         
@@ -23,6 +27,8 @@ namespace MvcProject.Controllers
         {
             Context context = new Context();
             var adminuserinfo = context.Admins.FirstOrDefault(x => x.AdminUsername == admin.AdminUsername && x.AdminPassword == admin.AdminPassword);
+
+
             if(adminuserinfo!= null)
             {
                 FormsAuthentication.SetAuthCookie(adminuserinfo.AdminUsername,false);
@@ -46,12 +52,11 @@ namespace MvcProject.Controllers
         [HttpPost]
         public ActionResult WriterLogin(Writer writer)
         {
-            Context context = new Context();
-            var adminuserinfo = context.Writers.FirstOrDefault(x => x.WriterMail == writer.WriterMail && x.WriterPassword == writer.WriterPassword);
-            if (adminuserinfo != null)
+            var writeruserinfo = _writerLoginManager.GetWriter(writer.WriterMail, writer.WriterPassword);
+            if (writeruserinfo != null)
             {
-                FormsAuthentication.SetAuthCookie(adminuserinfo.WriterMail, false);
-                Session["WriterMail"] = adminuserinfo.WriterMail;
+                FormsAuthentication.SetAuthCookie(writeruserinfo.WriterMail, false);
+                Session["WriterMail"] = writeruserinfo.WriterMail;
                 return RedirectToAction("MyContent", "WriterPanelContent");
             }
             else
@@ -66,7 +71,7 @@ namespace MvcProject.Controllers
         {
             FormsAuthentication.SignOut();
             Session.Abandon();
-            return RedirectToAction("Headings", "Default");
+            return RedirectToAction("HomePage","Home" );
         }
     }
 }

@@ -1,5 +1,9 @@
 ﻿@using Entity.Concrete
-@model List<Heading>
+
+
+@model PagedList.IPagedList<Heading>
+@using PagedList
+@using PagedList.Mvc
 
 @{
     ViewBag.Title = "Index";
@@ -15,7 +19,7 @@
 
 <!DOCTYPE html>
 <html>
-
+<link rel="stylesheet" href="~/Content/PagedList.css" />
 <body class="hold-transition sidebar-mini">
 
     <div>
@@ -24,7 +28,7 @@
 
             </div>
             <div class="col-7" style="margin-top:15px; margin-bottom:5px; margin-right:15px;">
-               
+
             </div>
         </div>
     </div>
@@ -36,10 +40,10 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Başlık İşlemleri</h3>
-                
+
                 <div class="card-tools">
 
-                    <a class="btn btn-tool" href="/Heading/AddHeading" title="Yeni Başlık"  style="color:darkgreen;">
+                    <a class="btn btn-tool" href="/Heading/AddHeading" title="Yeni Başlık" style="color:darkgreen;">
                         <i class="fas fa-plus"></i>
                         Yeni Başlık
                     </a>
@@ -51,7 +55,7 @@
                 </div>
 
             </div>
-           
+
             <div class="card-body p-0">
                 <table class="table table-striped projects">
                     <thead>
@@ -184,7 +188,7 @@
                                     <a class="btn btn-warning btn-sm" href="/Heading/DeleteHeading/@item.HeadingID">
                                         <i class="fas fa-exchange-alt">
                                         </i>
-                                       @deleteName
+                                        @deleteName
                                     </a>
                                 </td>
                             </tr>
@@ -200,5 +204,5 @@
 </body>
 </html>
 
-
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
 

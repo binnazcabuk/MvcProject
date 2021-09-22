@@ -15,7 +15,10 @@
         <div class="container-fluid">
             <div class="row mb-">
                 <div class="col-sm-6">
-                    <h1>Yeni Yazar Ekleme</h1>
+                    <h1 class="card-title">
+                        <a href="/Writer/Index" class="btn btn-tool" data-toggle="tooltip" title="Previous"><i class="fa fa-arrow-circle-left"></i></a>Yeni Yazar
+                    </h1>
+
 
                 </div>
             </div>
@@ -33,10 +36,10 @@
                     @using (Html.BeginForm("AddWriter", "Writer", FormMethod.Post))
                     {
                         <div class="form-group">
-                            @Html.Label("Yazar Adı:")
-                            @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })
+                          
+                            @Html.HiddenFor(x => x.WriterName, new { @class = "form-control" })
                             @Html.ValidationMessageFor(x => x.WriterName)
-                            <br />
+                            
                             @Html.Label("Yazar Soyadı:")
                             @Html.TextBoxFor(x => x.WriterSurName, new { @class = "form-control" })
                             @Html.ValidationMessageFor(x => x.WriterSurName)

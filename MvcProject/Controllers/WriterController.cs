@@ -4,6 +4,7 @@ using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entity.Concrete;
 using FluentValidation.Results;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,14 +19,15 @@ namespace MvcProject.Controllers
 
         WriterManager _writerManager = new WriterManager(new EfWriterDal());
         WriterValidator validationRules = new WriterValidator();
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
           
 
 
-            var writerValues = _writerManager.GetAll();
+            var writerValues = _writerManager.GetAll().ToPagedList(page ?? 1, 6); ;
             return View(writerValues);
         }
+       
 
         [HttpGet]
         public ActionResult AddWriter()

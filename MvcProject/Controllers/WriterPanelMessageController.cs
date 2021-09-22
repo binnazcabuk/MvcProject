@@ -1,5 +1,6 @@
 ﻿using Business.Concrete;
 using Business.ValidationRules;
+using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Entity.Concrete;
 using FluentValidation.Results;
@@ -16,7 +17,7 @@ namespace MvcProject.Controllers
     public class WriterPanelMessageController : Controller
     {
         // GET: WriterPanelMessage
-
+     
         MessageManager _messageManager = new MessageManager(new EfMessageDal());
         MessageValidator _validations = new MessageValidator();
 
@@ -25,22 +26,26 @@ namespace MvcProject.Controllers
             return View();
         }
 
+   
         public ActionResult Inbox()
         {
-            var messageList = _messageManager.GetAllInbox();
+            string p = (string)Session["WriterMail"];
+            
+
+            var messageList = _messageManager.GetAllInbox(p);
             return View(messageList);
         }
         public PartialViewResult MessagePartial() {
 
-            
 
-            var inbox = _messageManager.GetListUnRead().Count();
+            string p = (string)Session["WriterMail"];
+            var inbox = _messageManager.GetListUnRead(p).Count();
             ViewBag.inbox = inbox;
 
-            var inbox2 = _messageManager.GetAllInbox().Count();
-            ViewBag.inbox2 = inbox2;
+          var inbox2 = _messageManager.GetAllInbox(p).Count();
+          ViewBag.inbox2 = inbox2;
 
-            var trash = _messageManager.GetListTrash().Count();
+            var trash = _messageManager.GetListTrash(p).Count();
             ViewBag.trash = trash;
 
             return PartialView();
@@ -48,8 +53,9 @@ namespace MvcProject.Controllers
 
         public ActionResult Sendbox()
         {
+            string p = (string)Session["WriterMail"];
 
-            var messageList = _messageManager.GetAllSendbox();
+            var messageList = _messageManager.GetAllSendbox(p);
             return View(messageList);
         }
         [HttpGet]
@@ -61,12 +67,14 @@ namespace MvcProject.Controllers
         [HttpPost]
         public ActionResult NewMessage(Message message)
         {
+            string p = (string)Session["WriterMail"];
 
             ValidationResult result = _validations.Validate(message);
             if (result.IsValid)
             {
                 message.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
                 message.MessageStatus = true;
+                message.SenderMail = p;
                 _messageManager.Add(message);
                 return RedirectToAction("Sendbox");
             }
@@ -108,13 +116,15 @@ namespace MvcProject.Controllers
 
         public ActionResult UnReadMessage()
         {
-            var unReadMessage = _messageManager.GetListUnRead();
+            string p = (string)Session["WriterMail"];
+            var unReadMessage = _messageManager.GetListUnRead(p);
             return View(unReadMessage);
         }
 
         public ActionResult TrashMessage()
         {
-            var trashMessage = _messageManager.GetListTrash();
+            string p = (string)Session["WriterMail"];
+            var trashMessage = _messageManager.GetListTrash(p);
             return View(trashMessage);
         }
         public ActionResult GetTrashMessageDetails(int id)

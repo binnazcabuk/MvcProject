@@ -38,7 +38,7 @@
 
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                       
+
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">Başlıklar</a>
@@ -48,14 +48,14 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-    with font-awesome or any other icon font library -->
+                        with font-awesome or any other icon font library -->
 
 
                         @foreach (var item in Model)
                         {
 
 
-                          
+
                             <li class="nav-item">
                                 <a href="/Default/Headings/@item.HeadingID" class="nav-link">
 
@@ -67,7 +67,7 @@
                                 </a>
                             </li>
                         }
-                        </ul>
+                    </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>
@@ -77,7 +77,7 @@
         <div class="content-wrapper">
             <!-- Main content -->
             <div class="content">
-               @Html.Action("Index","Default")
+                @Html.Action("Index", "Default")
                 <!-- /.container-fluid -->
             </div>
             <!-- /.content -->
